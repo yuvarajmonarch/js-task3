@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find Longest String</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #afafe0;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        input, button {
+            padding: 10px;
+            margin: 10px;
+            font-size: 16px;
+        }
+
+        button {
+            background-color: #4682b4;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #4169e1;
+        }
+
+        .result {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #e6e6e6;
+            display: inline-block;
+            border-radius: 5px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Find Longest String in Array</h1>
+
+    <label for="arrayInput">Enter strings separated by commas:</label><br>
+    <input type="text" id="arrayInput" placeholder="e.g. apple, banana, cherry" required>
+    <br>
+
+    <button onclick="findLongestString()">Find Longest String</button>
+
+    <div id="result" class="result"></div>
+
+    <script>
+        function findLongestString() {
+            const input = document.getElementById("arrayInput").value;
+            if (input.trim() === "") {
+                document.getElementById("result").innerHTML = "<strong>Please enter some strings.</strong>";
+                return;
+            }
+
+            const array = input.split(",").map(str => str.trim());  // Split the input and trim spaces
+            let longest = "";
+
+            array.forEach(str => {
+                if (str.length > longest.length) {
+                    longest = str;
+                }
+            });
+
+            document.getElementById("result").innerHTML = `Longest string: <strong>${longest}</strong>`;
+        }
+    </script>
+
+</body>
+</html>

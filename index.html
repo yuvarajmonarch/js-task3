@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Task-3</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333; /* Set text color for contrast */
+            position: relative; /* Enable positioning for the overlay */
+            overflow: hidden; /* Prevent overflow */
+            height: 100%; /* Use full height of the content */
+        }
+        h1 {
+            text-align: center;
+            color: #fff; /* White text for visibility */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Add shadow for better visibility */
+            margin: 20px 0; /* Add some space around the heading */
+        }
+        /* Background image and overlay */
+        .background {
+            background-image: url('./assests/bg.jpeg'); /* Update with your image path */
+            background-size: cover; /* Cover the entire background */
+            background-position: center; /* Center the image */
+            position: fixed; /* Fix the background */
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: -1; /* Send to the back */
+        }
+        .overlay {
+            background-color: rgba(0, 0, 0, 0.35); /* White color with 35% opacity */
+            position: fixed; /* Fix the overlay */
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: -1; /* Send to the back */
+        }
+        main {
+            overflow-y: auto; /* Enable vertical scrolling */
+            max-height: 100vh; /* Limit height to viewport */
+            padding: 20px; /* Add some padding */
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+            display: flex;
+            flex-direction: column; /* Align buttons in a column */
+            align-items: center; /* Center align the buttons */
+            margin: 0; /* Remove default margin */
+        }
+        li {
+            margin: 10px 0; /* Space between buttons */
+        }
+        a {
+            display: inline-block; /* Make links inline-block to allow padding */
+            text-decoration: none;
+            color: #fff;
+            background-color: #4682b4; /* Button background color */
+            padding: 15px 30px; /* Padding for buttons */
+            border-radius: 8px; /* Rounded corners */
+            transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Shadow effect */
+            width: 200px; /* Set fixed width for equal sizes */
+            text-align: center; /* Center text inside buttons */
+        }
+        a:hover {
+            background-color: #4169e1; /* Darker color on hover */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="background"></div> <!-- Background Image -->
+    <div class="overlay"></div> <!-- White Overlay -->
+
+    <main>
+        <h1>JavaScript Task-3</h1>
+        <ul>
+            <li><a href="question1.html">Duplicate HTML Div Container</a></li>
+            <li><a href="question2.html">Rows and Columns - Build a Table</a></li>
+            <li><a href="question3.html">Rotate a String</a></li>
+            <li><a href="question4.html">Remove Character at Position</a></li>
+            <li><a href="question5.html">Count Vowels in String</a></li>
+            <li><a href="question6.html">Swap First and Last Elements</a></li>
+            <li><a href="question7.html">Sum of n + n/2 + n/4 + ...</a></li>
+            <li><a href="question8.html">Find Longest String</a></li>
+            <li><a href="question9.html">Check for Palindrome</a></li>
+            <li><a href="question10.html">Check for Prime Number</a></li>
+            <li><a href="question11.html">Fibonacci Series</a></li>
+            <li><a href="question12.html">Factorial of a Number</a></li>
+            <li><a href="question13.html">Construct a Pattern</a></li>
+            <li><a href="question14.html">Pyramid Pattern</a></li>
+            <li><a href="question15.html">Form Validations</a></li>
+            <li><a href="question16.html">JavaScript Calculator</a></li>
+            <li><a href="question17.html">Task List (Add, Delete)</a></li>
+            <li><a href="question18.html">Progress Bar</a></li>
+            <li><a href="question19.html">Collapsible Container</a></li>
+        </ul>
+    </main>
+
+</body>
+</html>

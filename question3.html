@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>String Rotator</title>
+    <style>
+        /* Rotating the given string given from user */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f8ff;
+            color: #333;
+            text-align: center;
+            padding: 50px;
+        }
+
+        h1, h2 {
+            color: #4682b4;
+        }
+
+        #userString {
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #4682b4;
+            width: 250px;
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #4682b4;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #4169e1;
+        }
+
+        #result {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #fafafa;
+            border-radius: 10px;
+            border: 1px solid #ddd;
+            display: inline-block;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .rotation {
+            font-size: 18px;
+            color: #333;
+            padding: 5px 0;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .rotation:hover {
+            color: #4682b4;
+            font-weight: bold
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Rotate a String</h1>
+
+    <label for="userString">Enter a string:</label><br>
+    <input type="text" id="userString" placeholder="Enter text here">
+    <br><br>
+
+    <button onclick="rotateString()">Rotate String</button>
+
+    <h2>Rotations:</h2>
+    <div id="result"></div>
+
+    <script>
+        function rotateString() {
+            const inputString = document.getElementById("userString").value;
+            const resultDiv = document.getElementById("result");
+
+            resultDiv.innerHTML = "";
+
+            if (inputString.length > 0) {
+                for (let i = 0; i < inputString.length; i++) {
+                    let rotatedString = inputString.slice(i) + inputString.slice(0, i);
+
+                    let rotationDiv = document.createElement("div");
+                    rotationDiv.className = "rotation";
+                    rotationDiv.textContent = rotatedString;
+                    resultDiv.appendChild(rotationDiv);
+                }
+            } else {
+                resultDiv.innerHTML = "<p>Please enter a string.</p>";
+            }
+        }
+    </script>
+
+</body>
+</html>

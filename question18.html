@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Progress Bar</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            flex-direction: column;
+        }
+
+        .progress-container {
+            width: 80%;
+            background-color: #e0e0e0;
+            border-radius: 25px;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+
+        .progress-bar {
+            height: 30px;
+            background-color: #4caf50;
+            width: 0; /* Initial width of the progress bar */
+            transition: width 0.5s; /* Smooth transition for the width change */
+        }
+
+        .progress-text {
+            text-align: center;
+            margin: 10px 0;
+            font-size: 18px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            background-color: #4682b4;
+            color: #fff;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin: 0 10px; /* Add margin for spacing */
+        }
+
+        button:hover {
+            background-color: #4169e1;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Progress Bar</h1>
+    <div class="progress-container">
+        <div class="progress-bar" id="progressBar"></div>
+    </div>
+    <div class="progress-text" id="progressText">Progress: 0%</div>
+    <div>
+        <button onclick="updateProgress()">Increase Progress</button>
+        <button onclick="resetProgress()">Reset Progress</button>
+    </div>
+
+    <script>
+        let progress = 0;
+
+        function updateProgress() {
+            if (progress < 100) {
+                progress += 10; // Increase progress by 10%
+                document.getElementById("progressBar").style.width = progress + '%';
+                document.getElementById("progressText").innerText = 'Progress: ' + progress + '%';
+            } else {
+                alert("Progress is complete!");
+            }
+        }
+
+        function resetProgress() {
+            progress = 0; // Reset progress to 0
+            document.getElementById("progressBar").style.width = '0%';
+            document.getElementById("progressText").innerText = 'Progress: 0%';
+        }
+    </script>
+
+</body>
+</html>

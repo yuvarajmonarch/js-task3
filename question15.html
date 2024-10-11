@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .container {
+            width: 500px; /* Increased width for the container */
+            margin: auto;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+
+        input {
+            width: 100%;
+            padding: 12px 10px; /* Increased padding for inputs */
+            margin: 10px -20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        button {
+            background-color: #4682b4;
+            color: #fff;
+            border: none;
+            padding: 12px 20px; /* Increased padding for button */
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%; /* Full width for the button */
+        }
+
+        button:hover {
+            background-color: #4169e1;
+        }
+
+        .error {
+            color: red;
+            font-size: 14px;
+        }
+
+        .success {
+            color: green;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Registration Form</h1>
+
+        <form id="registrationForm" onsubmit="return validateForm()">
+            <label for="username">Username:</label><br>
+            <input type="text" id="username" placeholder="Enter your username"><br>
+            <span id="usernameError" class="error"></span><br>
+
+            <label for="email">Email:</label><br>
+            <input type="text" id="email" placeholder="Enter your email"><br>
+            <span id="emailError" class="error"></span><br>
+
+            <label for="password">Password:</label><br>
+            <input type="password" id="password" placeholder="Enter your password"><br>
+            <span id="passwordError" class="error"></span><br>
+
+            <label for="confirmPassword">Confirm Password:</label><br>
+            <input type="password" id="confirmPassword" placeholder="Confirm your password"><br>
+            <span id="confirmPasswordError" class="error"></span><br>
+
+            <button type="submit">Submit</button>
+        </form>
+
+        <div id="successMessage" class="success"></div>
+    </div>
+
+    <script>
+        function validateForm() {
+            // Get form field values
+            const username = document.getElementById('username').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const password = document.getElementById('password').value.trim();
+            const confirmPassword = document.getElementById('confirmPassword').value.trim();
+
+            let isValid = true;
+
+            // Clear previous error messages
+            document.getElementById('usernameError').innerHTML = '';
+            document.getElementById('emailError').innerHTML = '';
+            document.getElementById('passwordError').innerHTML = '';
+            document.getElementById('confirmPasswordError').innerHTML = '';
+            document.getElementById('successMessage').innerHTML = '';
+
+            // Username validation
+            if (username === '') {
+                document.getElementById('usernameError').innerHTML = 'Username is required';
+                isValid = false;
+            }
+
+            // Email validation
+            if (email === '') {
+                document.getElementById('emailError').innerHTML = 'Email is required';
+                isValid = false;
+            } else if (!validateEmail(email)) {
+                document.getElementById('emailError').innerHTML = 'Please enter a valid email';
+                isValid = false;
+            }
+
+            // Password validation
+            if (password === '') {
+                document.getElementById('passwordError').innerHTML = 'Password is required';
+                isValid = false;
+            } else if (password.length < 6) {
+                document.getElementById('passwordError').innerHTML = 'Password must be at least 6 characters';
+                isValid = false;
+            }
+
+            // Confirm password validation
+            if (confirmPassword === '') {
+                document.getElementById('confirmPasswordError').innerHTML = 'Please confirm your password';
+                isValid = false;
+            } else if (password !== confirmPassword) {
+                document.getElementById('confirmPasswordError').innerHTML = 'Passwords do not match';
+                isValid = false;
+            }
+
+            // If the form is valid, show success message
+            if (isValid) {
+                document.getElementById('successMessage').innerHTML = 'Form submitted successfully!';
+            }
+
+            return isValid;
+        }
+
+        // Email validation function
+        function validateEmail(email) {
+            const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+            return emailPattern.test(email);
+        }
+    </script>
+
+</body>
+</html>

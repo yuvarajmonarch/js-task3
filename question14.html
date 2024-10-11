@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pyramid Pattern Generator</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f9;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        input, button {
+            padding: 10px;
+            margin: 10px;
+            font-size: 16px;
+        }
+
+        button {
+            background-color: #4682b4;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #4169e1;
+        }
+
+        .result {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #e6e6e6;
+            display: inline-block;
+            border-radius: 5px;
+            font-size: 18px;
+            white-space: pre; /* Keep new lines in pattern */
+            text-align: left;  /* Align the pattern to the left */
+            font-family: monospace; /* Use a monospace font for better alignment */
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Pyramid Pattern Generator</h1>
+
+    <label for="numberInput">Enter the number of rows (half-pyramid height):</label><br>
+    <input type="number" id="numberInput" placeholder="Enter a number" required>
+    <br>
+
+    <button onclick="generatePyramidPattern()">Generate Pyramid Pattern</button>
+
+    <div id="result" class="result"></div>
+
+    <script>
+        function generatePyramidPattern() {
+            const rows = parseInt(document.getElementById("numberInput").value);
+
+            if (isNaN(rows) || rows <= 0) {
+                document.getElementById("result").innerHTML = "<strong>Please enter a valid positive number.</strong>";
+                return;
+            }
+
+            let pattern = '';
+
+            // Upper half of the pyramid (including middle row)
+            for (let i = 1; i <= rows; i++) {
+                pattern += ' '.repeat(rows - i) + '*'.repeat(2 * i - 1) + '\n';
+            }
+
+            // Lower half of the pyramid
+            for (let i = rows - 1; i >= 1; i--) {
+                pattern += ' '.repeat(rows - i) + '*'.repeat(2 * i - 1) + '\n';
+            }
+
+            document.getElementById("result").innerHTML = pattern;
+        }
+    </script>
+
+</body>
+</html>

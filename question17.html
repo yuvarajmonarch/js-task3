@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .task-container {
+            width: 400px; /* Fixed width for the task list */
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        input[type="text"] {
+            width: calc(100% - 30px); /* Adjusting for button width */
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            background-color: #4682b4;
+            color: #fff;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #4169e1;
+        }
+
+        ul {
+            list-style-type: none; /* Remove bullet points */
+            padding: 0;
+        }
+
+        li {
+            display: flex;
+            justify-content: space-between; /* Align items */
+            align-items: center; /* Center vertically */
+            padding: 10px;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .delete-btn {
+            background-color: #e74c3c;
+            margin-left: 20px;
+        }
+
+        .delete-btn:hover {
+            background-color: #c0392b; /* Darker red on hover */
+        }
+
+        .quote {
+            text-align: center;
+            font-style: italic;
+            margin-top: 20px;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="task-container">
+        <h1>Task List</h1>
+        <input type="text" id="taskInput" placeholder="Add a new task...">
+        <button onclick="addTask()">Add Task</button>
+        <ul id="taskList"></ul>
+        <div class="quote">"Embrace the journey, for every step counts!"</div> <!-- Positive line -->
+    </div>
+
+    <script>
+        function addTask() {
+            const taskInput = document.getElementById('taskInput');
+            const taskValue = taskInput.value.trim();
+            if (taskValue === "") {
+                alert("Please enter a task.");
+                return;
+            }
+
+            const taskList = document.getElementById('taskList');
+            const li = document.createElement('li');
+
+            li.textContent = taskValue; // Add the task to the list
+
+            const deleteBtn = document.createElement('button');
+            deleteBtn.textContent = 'Delete';
+            deleteBtn.className = 'delete-btn';
+            deleteBtn.onclick = function() {
+                taskList.removeChild(li); // Remove the task from the list
+            };
+
+            li.appendChild(deleteBtn); // Append delete button to the list item
+            taskList.appendChild(li); // Add the new task to the task list
+            taskInput.value = ""; // Clear the input field
+        }
+    </script>
+
+</body>
+</html>

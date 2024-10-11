@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Duplicate Div Container</title>
+    <style>
+        .container {
+            border: 2px solid #000;
+            padding: 10px;
+            margin: 10px;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Duplicating the Containers -->
+    <div class="container" id="originalContainer">
+        <h1><font color="red">Original Container</font></h1>
+        <p>This is a paragraph inside the original container.</p>
+        <div>
+            <p>Nested div content</p>
+        </div>
+    </div>
+
+    <button onclick="duplicateContainer()">Duplicate Container</button>
+
+    <script>
+        function duplicateContainer() {
+            const original = document.getElementById("originalContainer");
+            const clone = original.cloneNode(true);
+            clone.id = "";
+            document.body.appendChild(clone);
+        }
+    </script>
+
+</body>
+</html>

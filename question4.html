@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Remove Character from String</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f9;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        input, button {
+            padding: 10px;
+            margin: 10px;
+            font-size: 16px;
+        }
+
+        button {
+            background-color: #4682b4;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #4169e1;
+        }
+
+        .result {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #e6e6e6;
+            display: inline-block;
+            border-radius: 5px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Remove Character from String</h1>
+
+    <label for="userString">Enter a string:</label><br>
+    <input type="text" id="userString" placeholder="Enter the string" required>
+    <br>
+
+    <label for="position">Enter position of character to remove (0-based index):</label><br>
+    <input type="number" id="position" min="0" placeholder="Enter position" required>
+    <br>
+
+    <button onclick="removeCharacter()">Remove Character</button>
+
+    <div id="result" class="result"></div>
+
+    <script>
+        function removeCharacter() {
+            const inputString = document.getElementById("userString").value;
+            const position = parseInt(document.getElementById("position").value);
+            const resultDiv = document.getElementById("result");
+
+            if (position >= 0 && position < inputString.length) {
+                const newString = inputString.slice(0, position) + inputString.slice(position + 1);
+
+                resultDiv.innerHTML = `New String: <strong>${newString}</strong>`;
+            } else {
+                resultDiv.innerHTML = "Invalid position. Please enter a valid position.";
+            }
+        }
+    </script>
+
+</body>
+</html>

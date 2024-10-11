@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Collapsible Container with User Input</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            flex-direction: column;
+        }
+
+        .container {
+            width: 80%;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .toggle-button {
+            width: 100%;
+            padding: 15px;
+            font-size: 16px;
+            border: none;
+            border-radius: 8px;
+            background-color: #4682b4;
+            color: #fff;
+            cursor: pointer;
+            text-align: left; /* Align text to the left */
+        }
+
+        .toggle-button:hover {
+            background-color: #4169e1;
+        }
+
+        .content {
+            padding: 15px;
+            display: none; /* Initially hide content */
+            border-top: 1px solid #ccc;
+        }
+
+        .info-container {
+            width: 80%;
+            padding: 15px;
+            background-color: #e6e6e6;
+            border-radius: 8px;
+            margin-top: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .info-container h3 {
+            margin-top: 0;
+        }
+
+        .info-container p {
+            margin: 5px 0;
+        }
+
+        input[type="text"] {
+            width: calc(100% - 20px); /* Full width minus padding */
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Collapsible Container with User Input</h1>
+    <div class="container">
+        <input type="text" id="userInput" placeholder="Type your content here...">
+        <button class="toggle-button" onclick="toggleContent()">Toggle Content</button>
+        <div class="content" id="collapsibleContent">
+            <p id="userContent"></p>
+        </div>
+    </div>
+
+    <!-- Information Section Container -->
+    <div class="info-container">
+        <h3>Information Section</h3>
+        <p>Here you can add any relevant information or details you want to display. This section is always visible, unlike the collapsible content.</p>
+    </div>
+
+    <script>
+        function toggleContent() {
+            const content = document.getElementById("collapsibleContent");
+            const userInput = document.getElementById("userInput").value.trim();
+            const userContent = document.getElementById("userContent");
+
+            if (userInput === "") {
+                alert("Please enter some text before toggling the content.");
+                return;
+            }
+
+            userContent.textContent = userInput; // Set user input as content
+            if (content.style.display === "none" || content.style.display === "") {
+                content.style.display = "block"; // Show content
+            } else {
+                content.style.display = "none"; // Hide content
+            }
+        }
+    </script>
+
+</body>
+</html>

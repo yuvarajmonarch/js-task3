@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fibonacci Series Generator</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f9;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        input, button {
+            padding: 10px;
+            margin: 10px;
+            font-size: 16px;
+        }
+
+        button {
+            background-color: #4682b4;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #4169e1;
+        }
+
+        .result {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #e6e6e6;
+            display: inline-block;
+            border-radius: 5px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Fibonacci Series Generator</h1>
+
+    <label for="termsInput">Enter the number of terms:</label><br>
+    <input type="number" id="termsInput" placeholder="Enter number of terms" required>
+    <br>
+
+    <button onclick="generateFibonacci()">Generate Fibonacci</button>
+
+    <div id="result" class="result"></div>
+
+    <script>
+        function generateFibonacci() {
+            const terms = parseInt(document.getElementById("termsInput").value);
+            
+            if (isNaN(terms) || terms <= 0) {
+                document.getElementById("result").innerHTML = "<strong>Please enter a valid positive number.</strong>";
+                return;
+            }
+
+            let fibonacciSeries = [];
+            let n1 = 0, n2 = 1, nextTerm;
+
+            for (let i = 1; i <= terms; i++) {
+                fibonacciSeries.push(n1);
+                nextTerm = n1 + n2;
+                n1 = n2;
+                n2 = nextTerm;
+            }
+
+            document.getElementById("result").innerHTML = `Fibonacci Series: <strong>${fibonacciSeries.join(', ')}</strong>`;
+        }
+    </script>
+
+</body>
+</html>

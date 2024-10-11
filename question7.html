@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sum of Series</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f9;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        input, button {
+            padding: 10px;
+            margin: 10px;
+            font-size: 16px;
+        }
+
+        button {
+            background-color: #4682b4;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #4169e1;
+        }
+
+        .result {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #e6e6e6;
+            display: inline-block;
+            border-radius: 5px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Calculate the Sum of Series</h1>
+
+    <label for="numberInput">Enter a number (n):</label><br>
+    <input type="number" id="numberInput" placeholder="Enter a number" required>
+    <br>
+
+    <button onclick="calculateSum()">Calculate Sum</button>
+
+    <div id="result" class="result"></div>
+
+    <script>
+        function calculateSum() {
+            const n = parseFloat(document.getElementById("numberInput").value);
+            let sum = 0;
+            let term = n;
+
+            while (term > 0.0001) { 
+                sum += term;
+                term /= 2;
+            }
+
+            document.getElementById("result").innerHTML = `Sum of the series: <strong>${sum.toFixed(4)}</strong>`;
+        }
+    </script>
+
+</body>
+</html>

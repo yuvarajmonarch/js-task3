@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Swap First and Last Elements</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f9;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        input, button {
+            padding: 10px;
+            margin: 10px;
+            font-size: 16px;
+        }
+
+        button {
+            background-color: #4682b4;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #4169e1;
+        }
+
+        .result {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #e6e6e6;
+            display: inline-block;
+            border-radius: 5px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Swap First and Last Elements of an Array</h1>
+
+    <label for="arrayInput">Enter integers separated by commas:</label><br>
+    <input type="text" id="arrayInput" placeholder="e.g. 1, 2, 3, 4" required>
+    <br>
+
+    <button onclick="swapFirstAndLast()">Swap Elements</button>
+
+    <div id="result" class="result"></div>
+
+    <script>
+        function swapFirstAndLast() {
+            const input = document.getElementById("arrayInput").value;
+            const array = input.split(',').map(num => parseInt(num.trim()));
+
+            if (array.length < 2) {
+                document.getElementById("result").innerHTML = "Array must have at least two elements.";
+                return;
+            }
+
+            const temp = array[0];
+            array[0] = array[array.length - 1];
+            array[array.length - 1] = temp;
+
+            document.getElementById("result").innerHTML = `Swapped Array: <strong>[${array.join(', ')}]</strong>`;
+        }
+    </script>
+
+</body>
+</html>

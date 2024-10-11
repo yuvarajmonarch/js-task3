@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Count and Display Vowels in String</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f9;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        input, button {
+            padding: 10px;
+            margin: 10px;
+            font-size: 16px;
+        }
+
+        button {
+            background-color: #4682b4;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #4169e1;
+        }
+
+        .result {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #e6e6e6;
+            display: inline-block;
+            border-radius: 5px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Count and Display Vowels in a String</h1>
+
+    <label for="userString">Enter a string:</label><br>
+    <input type="text" id="userString" placeholder="Enter the string" required>
+    <br>
+
+    <button onclick="countAndDisplayVowels()">Count Vowels</button>
+
+    <div id="result" class="result"></div>
+
+    <script>
+        function countAndDisplayVowels() {
+            const inputString = document.getElementById("userString").value;
+            const vowels = 'aeiouAEIOU';
+            let count = 0;
+            let foundVowels = [];
+
+            for (let char of inputString) {
+                if (vowels.includes(char)) {
+                    count++;
+                    foundVowels.push(char);
+                }
+            }
+
+            const resultDiv = document.getElementById("result");
+            resultDiv.innerHTML = `
+                Number of vowels: <strong>${count}</strong><br>
+                Vowels found: <strong>${foundVowels.join(', ')}</strong>`;
+        }
+    </script>
+
+</body>
+</html>
